@@ -1,12 +1,10 @@
 #!/usr/bin/env node
 
-import dotenv from 'dotenv';
-
 import audioController from './src/controllers/audioController.js';
 
-dotenv.config();
 
 const { AUDD_API_TOKEN } = process.env;
+console.log(AUDD_API_TOKEN);
 const inputPath = process.argv[[2]];
 
 if (!AUDD_API_TOKEN) {
