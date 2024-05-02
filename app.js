@@ -2,9 +2,7 @@
 
 import audioController from './src/controllers/audioController.js';
 
-
 const { AUDD_API_TOKEN } = process.env;
-console.log(AUDD_API_TOKEN);
 const inputPath = process.argv[[2]];
 
 if (!AUDD_API_TOKEN) {
