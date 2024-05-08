@@ -9,9 +9,11 @@
     "axios": "^1.6.8",
     "commander": "^12.0.0",
     "dotenv": "^16.4.5",
+    "fluent-ffmpeg": "^2.1.2",
     "music-metadata": "^7.14.0",
     "node-fetch": "^3.3.2",
-    "node-id3": "^0.2.6"
+    "node-id3": "^0.2.6",
+    "qs": "^6.12.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.0.2",
@@ -23,7 +25,7 @@
   },
   "scripts": {
     "lint": "eslint . --fix",
-    "analyze": "node --env-file .env ./app.js"
+    "analyze": "node --env-file .env app.js"
   },
   "type": "module"
 }
