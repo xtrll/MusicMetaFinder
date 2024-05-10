@@ -1,18 +1,49 @@
 #!/usr/bin/env node
 
-import audioController from './src/controllers/audioController.js';
+import fetchFiles from './src/utils/filesFetcher.js';
+import { validateAudioFiles } from './src/controllers/fileController.js';
+import { recognizeAudioFiles } from './src/controllers/recognitionController.js';
+// import metadataController from './src/controllers/metadataController.js';
+import { checkEnvVariables } from './src/utils/checkEnvVariables.js';
+import { checkInputPath } from './src/utils/checkInputPath.js';
 
-const { AUDD_API_TOKEN } = process.env;
-const inputPath = process.argv[[2]];
+const { ACOUSTID_API_TOKEN, SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } = process.env;
 
-if (!AUDD_API_TOKEN) {
-  console.error('Please set up the AUDD_API_TOKEN in your .env file.');
-  process.exit(1);
+async function main() {
+  try {
+    // Check for required environment variables
+    checkEnvVariables();
+    // Check for the input path
+    const inputPath = process.argv[[2]];
+    checkInputPath(inputPath);
+
+    // Resolve the input path to get array of file paths (handles one or more files)
+    const files = await fetchFiles(inputPath);
+    // Process the resolved paths to confirm and prepare the audio file for metadata recognition
+    const audioFiles = await validateAudioFiles(files);
+    // Recognize the content of the audio file and obtain the corresponding Spotify track ID
+    const recognizedAudioFiles = await recognizeAudioFiles(audioFiles);
+    // Fetch the audio metadata from Spotify using the recognized track IDs
+    // const audioMetadata = await metadataController.fetchFromSpotify(recognizedAudioFiles);
+    // Write the fetched metadata into the audio file
+    // const processedAudioFiles = await fileController.writeMetadata(audioMetadata, audioFiles);
+  } catch (e) {
+    console.error('An error occurred inside app.js:', e);
+    process.exit(1);
+  }
 }
 
-if (!inputPath) {
-  console.error('Please provide the path to an audio file.');
+main().catch((error) => {
+  console.error(`Execution error: ${error.message}`);
   process.exit(1);
-}
+});
 
-audioController(inputPath);
+process.on('uncaughtException', (error) => {
+  console.error('Uncaught Exception:', error);
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+  process.exit(1);
+});
