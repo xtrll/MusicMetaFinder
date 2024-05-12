@@ -11,5 +11,5 @@ import filesFetcher from '../utils/filesFetcher.js';
  *                                or rejects with an error if the operation fails.
  */
 export async function fetchFiles(inputPath) {
-    return filesFetcher(inputPath);
+  return filesFetcher(inputPath);
 }

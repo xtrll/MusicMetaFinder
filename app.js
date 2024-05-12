@@ -1,13 +1,12 @@
 #!/usr/bin/env node
-
+import { checkEnvVariables } from './src/services/checkEnvVariables.js';
+import { checkInputPath } from './src/services/checkInputPath.js';
 import fetchFiles from './src/utils/filesFetcher.js';
 import { validateAudioFiles } from './src/controllers/fileController.js';
 import { recognizeAudioFiles } from './src/controllers/recognitionController.js';
 // import metadataController from './src/controllers/metadataController.js';
-import { checkEnvVariables } from './src/utils/checkEnvVariables.js';
-import { checkInputPath } from './src/utils/checkInputPath.js';
 
-const { ACOUSTID_API_TOKEN, SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } = process.env;
+const { ACOUSTID_API_KEY, SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } = process.env;
 
 async function main() {
   try {

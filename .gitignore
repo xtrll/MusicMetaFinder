@@ -130,4 +130,4 @@ dist
 .pnp.*
 
 # Miscellaneous
-.mp3
+*.mp3
