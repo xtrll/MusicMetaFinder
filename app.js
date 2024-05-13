@@ -24,6 +24,7 @@ async function main() {
     const recordingIds = await recognizeAudioFiles(audioFiles);
     // Fetch the audio metadata from Spotify using the recognized track IDs
     const audioMetadata = await retrieveMetadata(recordingIds);
+    console.log(audioMetadata);
     // Write the fetched metadata into the audio file
     // const processedAudioFiles = await fileController.writeMetadata(audioMetadata, audioFiles);
   } catch (e) {

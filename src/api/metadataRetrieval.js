@@ -1,7 +1,5 @@
-import axios from 'axios';
 import axiosRetry from '../services/retryAxios.js';
-import { handleError } from '../errors/musicBrainzApiErrorHandler.js';
-// import { handleError } from '../errors/musicBrainzApiErrorHandler.js';
+import { handleError } from '../errors/generalApiErrorHandler.js';
 
 /**
  * Retrieves the metadata for a recording from MusicBrainz.
@@ -30,6 +28,7 @@ export default async function getAudioMetadata(recordingId) {
         return null;
       }
 
+      console.log('Metadata retrieval successful for:', recordingId);
       return data;
     })
     .catch((error) => {
