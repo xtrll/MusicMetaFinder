@@ -21,7 +21,7 @@ export default async function audioRecognition(filePath) {
     client: process.env.ACOUSTID_API_KEY,
     fingerprint,
     duration,
-    meta: 'releaseids', // Optional parameter to specify additional metadata
+    meta: 'recordings', // Optional parameter to specify additional metadata
   });
 
   const requestOptions = {
@@ -30,23 +30,21 @@ export default async function audioRecognition(filePath) {
     },
   };
 
-  // Execute the POST request to AcoustID API
   return axiosRetry.post('https://api.acoustid.org/v2/lookup', body, requestOptions)
     .then((response) => {
       const { data } = response;
-      // Ensure data is present in the response
+
       if (!data || !data.results.length) {
         console.error(`Song ${filePath} could not be recognized by AcoustId`);
         return null;
       }
-      // Check for errors returned by the API and throw them
+
       if (data.status !== 'ok') {
         throw new Error(`${data.error.message}`);
       }
-      // If no errors, resolve the promise with the API response data
+
       console.log('Recognition successful for:', filePath);
-      console.log(data.results);
-      return data.results;
+      return data.results[0].recordings[0].id;
     })
     .catch((error) => {
       const errorMessage = handleError(error, filePath);

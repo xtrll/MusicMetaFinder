@@ -1,18 +1,43 @@
 import axios from 'axios';
+import axiosRetry from '../services/retryAxios.js';
+import { handleError } from '../errors/musicBrainzApiErrorHandler.js';
+// import { handleError } from '../errors/musicBrainzApiErrorHandler.js';
 
-export default function getTrackMetadata(trackId, accessToken) {
-  const endpoint = `https://api.spotify.com/v1/tracks/${trackId}`;
+/**
+ * Retrieves the metadata for a recording from MusicBrainz.
+ *
+ * @param {string} recordingId - The MusicBrainz recording ID.
+ * @returns {Promise<Object>} - A promise resolving to the track metadata.
+ */
+export default async function getAudioMetadata(recordingId) {
+  const baseUrl = 'https://musicbrainz.org';
+  const query = `/ws/2/recording/${recordingId}?fmt=json&inc=artists+releases+release-groups+isrcs+url-rels+discids+media+artist-credits+aliases+tags+ratings+genres`;
 
+  const { VERSION, PROJECTNAME, EMAIL } = process.env;
   const requestOptions = {
     headers: {
-      Authorization: `Bearer ${accessToken}`,
+      'User-Agent': `${PROJECTNAME}/${VERSION} ( ${EMAIL} )`,
+      Accept: 'application/json',
     },
   };
 
-  return axios.get(endpoint, requestOptions)
-    .then((response) => response.data)
+  return axiosRetry.get(baseUrl + query, requestOptions)
+    .then((response) => {
+      const { data } = response;
+
+      if (!data) {
+        console.error(`Recording ID ${recordingId} could not retrieve metadata from MusicBrainz`);
+        return null;
+      }
+
+      return data;
+    })
     .catch((error) => {
-      console.error('Error retrieving track metadata:', error);
-      throw error;
+      // If it's a 404 error, log the error and proceed
+      if (error.response && error.response.status === 404) {
+        console.error(`No metadata found for recording ID: ${recordingId}`);
+        return null;
+      }
+      handleError(error, recordingId);
     });
 }

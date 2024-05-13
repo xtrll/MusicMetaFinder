@@ -4,7 +4,7 @@ import { checkInputPath } from './src/services/checkInputPath.js';
 import fetchFiles from './src/utils/filesFetcher.js';
 import { validateAudioFiles } from './src/controllers/fileController.js';
 import { recognizeAudioFiles } from './src/controllers/recognitionController.js';
-// import metadataController from './src/controllers/metadataController.js';
+import { retrieveMetadata } from './src/controllers/metadataController.js';
 
 const { ACOUSTID_API_KEY, SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } = process.env;
 
@@ -21,9 +21,9 @@ async function main() {
     // Process the resolved paths to confirm and prepare the audio file for metadata recognition
     const audioFiles = await validateAudioFiles(files);
     // Recognize the content of the audio file and obtain the corresponding Spotify track ID
-    const recognizedAudioFiles = await recognizeAudioFiles(audioFiles);
+    const recordingIds = await recognizeAudioFiles(audioFiles);
     // Fetch the audio metadata from Spotify using the recognized track IDs
-    // const audioMetadata = await metadataController.fetchFromSpotify(recognizedAudioFiles);
+    const audioMetadata = await retrieveMetadata(recordingIds);
     // Write the fetched metadata into the audio file
     // const processedAudioFiles = await fileController.writeMetadata(audioMetadata, audioFiles);
   } catch (e) {
