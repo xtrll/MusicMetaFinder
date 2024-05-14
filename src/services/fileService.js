@@ -1,4 +1,4 @@
-import validateAudioFile from '../services/audioFileValidator.js';
+import validateAudioFile from '../utils/validateAudioFiles.js';
 
 /**
  * Processes an array of file paths and returns an array containing only valid audio file paths.
@@ -6,7 +6,7 @@ import validateAudioFile from '../services/audioFileValidator.js';
  * @param {string[]} filePaths - The array of file paths to process.
  * @returns {Promise<string[]>} A promise that resolves to an array of valid audio file paths.
  */
-export async function validateAudioFiles(filePaths) {
+export default async function validateAudioFiles(filePaths) {
   // Validate input type
   if (!filePaths instanceof Array) {
     throw new TypeError('Input must be an array of file paths (strings).');

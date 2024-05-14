@@ -1,22 +1,22 @@
-import getTrackMetadata from '../api/metadataRetrieval.js';
-import getLyrics from '../api/lyricRetrieval.js';
-import {getAlbumArt} from "../api/imageRetrieval.js";
+import requestMetadata from '../../api/metadata/musicBrainzApi.js';
+import getAlbumArt from "../../api/metadata/coverArtArchiveApi.js";
+import getLyrics from '../../api/metadata/lyricOvhApi.js';
 
 /**
- * Controller to handle retrieval of metadata for an array of MusicBrainz recording IDs.
+ * Adapter to handle retrieval of metadata for an array of MusicBrainz recording IDs.
  * @function
  * @param {string[]} recordingIds - An array of MusicBrainz recording IDs.
- * @returns {Promise<Object[]>} A promise that resolves with an array of metadata objects.
+ * @returns {Promise<Object[]>} A promise that resolves with an object of metadata.
  */
-export async function retrieveMetadata(recordingIds) {
+export default async function getMetadata(recordingIds) {
   try {
     if (!Array.isArray(recordingIds)) {
-      throw new Error('MetadataController expects an array of recordingIds');
+      throw new Error('musicBrainzAdapter expects an array of recordingIds');
     }
 
-    // Prepare an array to hold the metadata results initialized as an array of Promises
+    // Prepare an object to hold the metadata results initialized as an array of Promises
     const metadataPromises = recordingIds.map(async (recordingId) => {
-      const trackMetadata = await getTrackMetadata(recordingId);
+      const trackMetadata = await requestMetadata(recordingId);
       const artist = trackMetadata['artist-credit']?.[0]?.name;
       const title = trackMetadata.title;
       const albumId = trackMetadata.releases[0].id
@@ -35,7 +35,7 @@ export async function retrieveMetadata(recordingIds) {
 
     return await Promise.all(metadataPromises);
   } catch (e) {
-    console.error('Error retrieving metadata from MusicBrainz or lyrics:', e);
+    console.error('Error retrieving metadata using MetaBrainz:', e);
     throw e;
   }
 }

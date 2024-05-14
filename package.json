@@ -3,15 +3,18 @@
   "version": "1.0.0",
   "description": "CLI utility for music enthusiasts to automatically recognize tracks and enrich file metadata based on the fetched information.",
   "bin": {
-    "analyze-audio": "node --env-file .env ./app.js"
+    "analyze-audio": "node --env-file .env ./cli.js"
   },
   "dependencies": {
     "axios": "^1.6.8",
     "axios-retry": "^4.1.0",
-    "command-exists": "^1.2.9",
+    "commander": "^12.0.0",
     "dotenv": "^16.4.5",
+    "fluent-ffmpeg": "^2.1.2",
     "fpcalc": "^1.3.0",
     "music-metadata": "^7.14.0",
+    "node-fetch": "^3.3.2",
+    "node-id3": "^0.2.6",
     "qs": "^6.12.1"
   },
   "devDependencies": {
@@ -24,7 +27,7 @@
   },
   "scripts": {
     "lint": "eslint . --fix",
-    "analyze": "node --env-file .env app.js"
+    "analyze": "node --env-file .env cli.js"
   },
   "type": "module"
 }

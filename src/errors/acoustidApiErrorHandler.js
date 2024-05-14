@@ -1,4 +1,4 @@
-export function handleError(error, filePath) {
+export default function handleError(error, filePath) {
   if (error.response) { // Detailed error information when the API responds with an error status
     console.error(`Request failed with status: ${error.response.status}`);
     console.error('Headers:', error.response.headers);

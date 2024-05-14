@@ -1,13 +1,13 @@
-import axiosRetry from '../services/retryAxios.js';
-import { handleError } from '../errors/generalApiErrorHandler.js';
+import axiosRetry from '../../utils/retryAxios.js';
+import handleError from '../../errors/generalApiErrorHandler.js';
 
 /**
  * Retrieves the metadata for a recording from MusicBrainz.
  *
- * @param {string} recordingId - The MusicBrainz recording ID.
+ * @param {string} recordingId - The MusicBrainz recording ID (can be obtained from acoustid).
  * @returns {Promise<Object>} - A promise resolving to the track metadata.
  */
-export default async function getAudioMetadata(recordingId) {
+export default async function getMetadata(recordingId) {
   const baseUrl = 'https://musicbrainz.org';
   const query = `/ws/2/recording/${recordingId}?fmt=json&inc=artists+releases+release-groups+isrcs+url-rels+discids+media+artist-credits+aliases+tags+ratings+genres`;
 
@@ -37,6 +37,7 @@ export default async function getAudioMetadata(recordingId) {
         console.error(`No metadata found for recording ID: ${recordingId}`);
         return null;
       }
-      handleError(error, recordingId);
+      const errorMessage = handleError(error, recordingId);
+      throw new Error(errorMessage);
     });
 }

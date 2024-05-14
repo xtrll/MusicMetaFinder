@@ -1,14 +1,14 @@
 import fpcalc from 'fpcalc'; // Chromaprint MUST be present inside %PATH% as well. https://github.com/acoustid/chromaprint/releases
-import axiosRetry from '../services/retryAxios.js';
-import { handleError } from '../errors/acoustidApiErrorHandler.js';
+import axiosRetry from '../../utils/retryAxios.js';
+import handleError from '../../errors/acoustidApiErrorHandler.js';
 
 /**
  * Identifies an audio file using the AcoustID API.
  *
  * @param {string} filePath - The path to the audio file to be recognized.
- * @returns {Promise<Object>} - A promise resolving to the recognition result.
+ * @returns {Promise<Object>} - A promise resolving to the recording id.
  */
-export default async function audioRecognition(filePath) {
+export default async function acoustdIdAudioRecognition(filePath) {
   const { duration, fingerprint } = await new Promise((resolve, reject) => {
     fpcalc(filePath, (err, result) => {
       if (err) reject(err);

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosRetry from '../../utils/retryAxios.js';
 
 /**
  * Retrieves the album art image URL for a given album ID.
@@ -7,10 +7,10 @@ import axios from 'axios';
  * @param {string} albumId - The unique identifier for the album whose art is being retrieved.
  * @returns {Promise<string|null>} - A promise that resolves to the image URL or null if not found or in case of an error.
  */
-export const getAlbumArt = (albumId) => {
+export default async function getAlbumArt(albumId) {
   const endpoint = `http://coverartarchive.org/release/${albumId}/front`;
 
-  return axios.get(endpoint, { maxRedirects: 0 })
+  return axiosRetry.get(endpoint, { maxRedirects: 0 })
     .then((response) => {
       // If the status code is 200, the image URL should be in the responseURL
       if (response.status === 200) {
@@ -30,4 +30,4 @@ export const getAlbumArt = (albumId) => {
       console.error('Error retrieving cover art:', error);
       return null;
     });
-};
+}

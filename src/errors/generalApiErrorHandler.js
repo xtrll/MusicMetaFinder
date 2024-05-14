@@ -1,4 +1,4 @@
-export function handleError(error, identifier) {
+export default function handleError(error, identifier) {
   let message = '';
 
   // Handler when the API responds with an error status.

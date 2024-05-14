@@ -1,4 +1,4 @@
-import filesFetcher from '../utils/filesFetcher.js';
+import filesFetcher from '../utils/fetchFiles.js';
 
 /**
  * Handle the input path provided by the user to resolve file paths

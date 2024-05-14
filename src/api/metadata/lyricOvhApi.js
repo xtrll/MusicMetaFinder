@@ -1,5 +1,5 @@
-import axiosRetry from '../services/retryAxios.js';
-import { handleError } from '../errors/generalApiErrorHandler.js';
+import axiosRetry from '../../utils/retryAxios.js';
+import handleError from '../../errors/generalApiErrorHandler.js';
 
 /**
  * Fetches lyrics for a specific song using the provided artist name and title.
@@ -9,7 +9,7 @@ import { handleError } from '../errors/generalApiErrorHandler.js';
  * @param {string} title - The title of the song.
  * @returns {Promise<string|null>} Promise object representing the lyrics for the song or null if not found or in case of an error.
  */
-export default function fetchLyrics(artist, title) {
+export default async function getLyrics(artist, title) {
   const endpoint = `https://api.lyrics.ovh/v1/${encodeURIComponent(artist)}/${encodeURIComponent(title)}`;
 
   return axiosRetry.get(endpoint)
