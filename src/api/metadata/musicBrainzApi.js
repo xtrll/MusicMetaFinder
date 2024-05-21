@@ -9,7 +9,7 @@ import handleError from '../../errors/generalApiErrorHandler.js';
  */
 export default async function getMetadata(recordingId) {
   const baseUrl = 'https://musicbrainz.org';
-  const query = `/ws/2/recording/${recordingId}?fmt=json&inc=artists+releases+release-groups+isrcs+url-rels+discids+media+artist-credits+aliases+tags+ratings+genres`;
+  const query = `/ws/2/recording/${recordingId}?fmt=json&inc=artists+releases`;
 
   const { VERSION, PROJECTNAME, EMAIL } = process.env;
   const requestOptions = {
