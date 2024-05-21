@@ -1,4 +1,5 @@
 import axiosRetry from '../../utils/retryAxios.js';
+import handleError from '../../errors/generalApiErrorHandler.js';
 
 /**
  * Retrieves the album art image URL for a given album ID.
@@ -26,8 +27,13 @@ export default async function getAlbumArt(albumId) {
       if (error.response && error.response.status === 307) {
         // In case of a 307 redirect status received in the error, return the 'location' header.
         return error.response.headers.location;
+      } if (error.response.status === 404) {
+        console.error(`No album art found for album ID: ${albumId}`);
+        return null;
       }
-      console.error('Error retrieving cover art:', error);
+
+      const errorMessage = handleError(error);
+      console.error('Error retrieving cover art:', errorMessage);
       return null;
     });
 }
