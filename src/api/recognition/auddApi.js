@@ -1,5 +1,4 @@
 import fs from 'fs';
-import axios from 'axios';
 import axiosRetry from '../../utils/retryAxios.js';
 import handleError from '../../errors/generalApiErrorHandler.js';
 
@@ -16,7 +15,7 @@ export default async function auddAudioRecognition(filePath) {
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
   };
 
-  return axios.post('https://api.audd.io/', new URLSearchParams(body), requestOptions)
+  return axiosRetry.post('https://api.audd.io/', new URLSearchParams(body), requestOptions)
     .then((response) => {
       const { data } = response;
 
@@ -24,7 +23,10 @@ export default async function auddAudioRecognition(filePath) {
       if (data.error) throw new Error(`Audd API Error: ${JSON.stringify(data.error)}`);
 
       console.log('Recognition successful for:', filePath);
-      return data;
+      return {
+        data,
+        filePath,
+      };
     })
     .catch((error) => {
       console.error('Error recognizing audio');
