@@ -2,66 +2,68 @@ import fs from 'fs';
 import path from 'path';
 
 /**
- * Fetches files from a given input path. If the path is a directory,
- * it recursively fetches all files within it, including in subdirectories.
- * If the path is an individual file, it returns an array with just
- * that file path. This function handles both files and directories,
- * making it versatile for various file fetching needs.
+ * Recursively fetches all files within a directory tree, or if the path is a file, returns it in an array.
  *
- * @param {string} inputPath - The path to the file or directory to fetch files from.
+ * @param {string} inputPath - Path to the directory or file.
  * @returns {Promise<string[]>} A promise that resolves with an array of file paths.
- * @throws {Error} If the inputPath does not refer to an existing file or directory.
+ * @throws {Error} Throws an error if the path does not exist or is not accessible.
  */
 export default async function fetchFiles(inputPath) {
   try {
+    // Stat the path to determine if it's a file or directory
     const stats = await fs.promises.stat(inputPath);
-    let files = [];
+
     if (stats.isDirectory()) {
-      // Recursive case: inputPath is a directory.
-      files = await fetchFilesFromDirectory(inputPath);
-    } else if (stats.isFile()) {
-      // Base case: inputPath is a file.
-      files = [inputPath];
-    } else {
-      throw new Error('Invalid path: not a file or directory');
+      // Initiate recursive file fetching for directories
+      // eslint-disable-next-line no-use-before-define
+      return fetchFilesFromDirectory(inputPath);
+    } if (stats.isFile()) {
+      // Return the file path in an array for individual files
+      return [inputPath];
     }
-    return files;
-  } catch (e) {
-    console.error('Error resolving path', e);
-    throw e;
+    // The path is neither a file nor a directory
+    throw new Error(`Input path is neither a file nor a directory: ${inputPath}`);
+  } catch (error) {
+    // Throw an error with a clear message for the caller to handle
+    throw new Error(`Failed to fetch files: ${error.message}`);
   }
 }
 
 /**
- * A private helper function that recursively fetches all files within a directory.
- * It will traverse all subdirectories and return a flat array of file paths.
+ * Helper function that recursively traverses through a directory and accumulates file paths.
  *
- * @param {string} folderPath - The directory path to start the file search from.
- * @returns {Promise<string[]>} A promise that resolves with an array of file paths.
- * @throws {Error} If an error occurs while reading the directory.
+ * @param {string} dirPath The starting directory path.
+ * @returns {Promise<string[]>} A promise that resolves with an array of file paths found recursively within the directory path.
+ * @private
  */
-async function fetchFilesFromDirectory(folderPath) {
-  async function enumerateFilesInDirectory(dirPath) {
+async function fetchFilesFromDirectory(dirPath) {
+  // Define the recursive function for enumerating files
+  async function enumerateFilesInDirectory(currentPath) {
     let fileList = [];
-    const entries = await fs.readdir(dirPath, { withFileTypes: true });
+    const entries = await fs.promises.readdir(currentPath, { withFileTypes: true });
+
+    // Loop over directory entries and handle directories and files
     for (const entry of entries) {
-      const fullPath = path.join(dirPath, entry.name);
+      const fullPath = path.join(currentPath, entry.name);
+
       if (entry.isDirectory()) {
-        // Recurse into subdirectories.
-        fileList = fileList.concat(await enumerateFilesInDirectory(fullPath));
+        // Recursively enumerate files in subdirectories
+        // eslint-disable-next-line no-await-in-loop
+        fileList = [...fileList, ...await enumerateFilesInDirectory(fullPath)];
       } else {
-        // Add file path to the list.
+        // Add file to the list
         fileList.push(fullPath);
       }
     }
     return fileList;
   }
 
+  // Use the recursive function starting from the provided directory path
   try {
-    // Initiate recursive file listing from the root folder path.
-    return await enumerateFilesInDirectory(folderPath);
-  } catch (e) {
-    console.error(`Error enumerating files in directory ${folderPath}:`, e);
-    throw e;
+    return await enumerateFilesInDirectory(dirPath);
+  } catch (error) {
+    // Log the error with context and rethrow it
+    console.error(`Error while enumerating files in directory ${dirPath}:`, error);
+    throw new Error(`Unable to enumerate files in directory: ${dirPath}`);
   }
 }
