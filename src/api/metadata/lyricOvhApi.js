@@ -7,7 +7,7 @@ import handleError from '../../errors/generalApiErrorHandler.js';
  *
  * @param {string} artist - The name of the artist.
  * @param {string} title - The title of the song.
- * @returns {Promise<axios.AxiosResponse<any>>} Promise object representing the lyrics for the song or null if not found or in case of an error.
+ * @returns {Promise<axiosRetry.AxiosResponse<any>>} Promise object representing the lyrics for the song or null if not found or in case of an error.
  */
 export default async function getLyrics(artist, title) {
   const endpoint = `https://api.lyrics.ovh/v1/${encodeURIComponent(artist)}/${encodeURIComponent(title)}`;
