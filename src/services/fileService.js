@@ -8,7 +8,7 @@ import validateAudioFile from '../utils/validateAudioFiles.js';
  */
 export default async function validateAudioFiles(filePaths) {
   // Validate input type
-  if (!filePaths instanceof Array) {
+  if (!(filePaths instanceof Array)) {
     throw new TypeError('Input must be an array of file paths (strings).');
   }
   // Create a Promise for each file to validate it as an audio file
