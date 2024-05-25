@@ -129,6 +129,9 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# Project Specific
+# Test files
 *.mp3
+music
+
+# Stores found album arts
 images
