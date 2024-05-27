@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs/promises';
-import generateUniqueFilename from '../utils/generateUniqueFilename.js';
+import generateUniqueFilename from './generateUniqueFilename.js';
 
 /**
  * Renames an audio file by its metadata properties: artist and title.

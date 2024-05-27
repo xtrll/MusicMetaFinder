@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d4160043-cf6e-432e-a9d1-4e77ea95ecd3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/adapters/metadata/musicBrainzAdapter-LifeIsARace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/adapters/metadata/spotifyAdapter-LifeIsARace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/adapters/recognition/acoustidAdapter-LifeIsARace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/adapters/recognition/auddAdapter-LifeIsARace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/metadata/coverArtArchiveApi-LifeIsARace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/metadata/lyricOvhApi-LifeIsARace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/metadata/musicBrainzApi-LifeIsARace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/metadata/spotifyApi-LifeIsARace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/recognition/acoustidApi-LifeIsARace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/recognition/auddApi-LifeIsARace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/spotifyAuthApi-LifeIsARace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/errors/acoustidApiErrorHandler-LifeIsARace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/errors/generalApiErrorHandler-LifeIsARace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/fileService-LifeIsARace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/metadataRetrievalService-LifeIsARace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/metadataWriterService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/musicRecognitionService-LifeIsARace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/pathService-LifeIsARace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/checkEnvVariables-LifeIsARace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/checkInputPath-LifeIsARace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/fetchFiles-LifeIsARace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/retryAxios-LifeIsARace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/validateAudioFiles-LifeIsARace.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/adapters/metadata/musicBrainzAdapter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/adapters/metadata/musicBrainzAdapter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/adapters/metadata/spotifyAdapter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/adapters/metadata/spotifyAdapter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/adapters/recognition/acoustidAdapter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/adapters/recognition/acoustidAdapter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/adapters/recognition/auddAdapter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/adapters/recognition/auddAdapter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/metadata/coverArtArchiveApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/metadata/coverArtArchiveApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/metadata/lyricOvhApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/metadata/lyricOvhApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/metadata/musicBrainzApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/metadata/musicBrainzApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/metadata/spotifyApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/metadata/spotifyApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/recognition/acoustidApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/recognition/acoustidApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/recognition/auddApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/recognition/auddApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/spotifyAuthApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/spotifyAuthApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/errors/acoustidApiErrorHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/errors/acoustidApiErrorHandler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/errors/generalApiErrorHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/errors/generalApiErrorHandler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/fileService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/fileService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/metadataRetrievalService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/metadataRetrievalService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/musicRecognitionService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/musicRecognitionService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/pathService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/pathService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/checkEnvVariables.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/checkEnvVariables.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/checkInputPath.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/checkInputPath.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/fetchFiles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/fetchFiles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/retryAxios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/retryAxios.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/validateAudioFiles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/validateAudioFiles.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {}
+}</component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1715481944" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="acoustid" />
+                    <option name="lastUsedInstant" value="1715320470" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/xtrll/MusicMetaFinder.git&quot;,
+    &quot;accountId&quot;: &quot;2dd8b0a6-0bdb-4445-9876-eac917c9314a&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/app.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/controllers/recognitionController.js" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2fNgHgn8pMO0IODj8huilr8qzvv" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Node.js.app.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.audioController.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.checkChromaprint.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.lyricsRetrieval.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.test.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.truncateAudioStream.js.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;21.6.2&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.12.11&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/XTRLL/OneDrive/Projects/WebstormProjects/MusicMetaFinder&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\XTRLL\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\xtrll\OneDrive\Projects\WebstormProjects\MusicMetaFinder\src\adapters\recognition" />
+      <recent name="C:\Users\xtrll\OneDrive\Projects\WebstormProjects\MusicMetaFinder\src\adapters\metadata" />
+      <recent name="C:\Users\xtrll\OneDrive\Projects\WebstormProjects\MusicMetaFinder\src\services" />
+      <recent name="C:\Users\xtrll\OneDrive\Projects\WebstormProjects\MusicMetaFinder\src\api\metadata" />
+      <recent name="C:\Users\xtrll\OneDrive\Projects\WebstormProjects\MusicMetaFinder\src\api\recognition" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Node.js.lyricRetrieval.js">
+    <configuration name="checkChromaprint.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/services/checkChromaprint.js" working-dir="$PROJECT_DIR$/src/services">
+      <method v="2" />
+    </configuration>
+    <configuration name="lyricRetrieval.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/api/metadata/lyricRetrieval.js" working-dir="$PROJECT_DIR$/src/api">
+      <method v="2" />
+    </configuration>
+    <configuration name="test.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/test.js" working-dir="$PROJECT_DIR$/src">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.lyricRetrieval.js" />
+        <item itemvalue="Node.js.checkChromaprint.js" />
+        <item itemvalue="Node.js.test.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-WS-241.15989.105" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d4160043-cf6e-432e-a9d1-4e77ea95ecd3" name="Changes" comment="" />
+      <created>1713646863779</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1713646863779</updated>
+      <workItem from="1713646864896" duration="8000" />
+      <workItem from="1713719339108" duration="1794000" />
+      <workItem from="1713732443312" duration="323000" />
+      <workItem from="1713732777028" duration="116000" />
+      <workItem from="1713732899783" duration="2161000" />
+      <workItem from="1713735288664" duration="15843000" />
+      <workItem from="1713813884367" duration="1663000" />
+      <workItem from="1713833652605" duration="5256000" />
+      <workItem from="1713934593236" duration="4520000" />
+      <workItem from="1714279427712" duration="806000" />
+      <workItem from="1714435371913" duration="660000" />
+      <workItem from="1714497169161" duration="4293000" />
+      <workItem from="1714586158180" duration="2418000" />
+      <workItem from="1714602276496" duration="10134000" />
+      <workItem from="1714686118351" duration="10531000" />
+      <workItem from="1714756397102" duration="5253000" />
+      <workItem from="1714850771448" duration="8908000" />
+      <workItem from="1714941636860" duration="3548000" />
+      <workItem from="1715013121597" duration="5447000" />
+      <workItem from="1715106823285" duration="8805000" />
+      <workItem from="1715192649220" duration="5273000" />
+      <workItem from="1715214034776" duration="1635000" />
+      <workItem from="1715216047174" duration="3487000" />
+      <workItem from="1715303366596" duration="8330000" />
+      <workItem from="1715365168362" duration="4820000" />
+      <workItem from="1715389947292" duration="5797000" />
+      <workItem from="1715395832288" duration="525000" />
+      <workItem from="1715396368314" duration="1618000" />
+      <workItem from="1715447000458" duration="325000" />
+      <workItem from="1715447332961" duration="11650000" />
+      <workItem from="1715477169447" duration="5824000" />
+      <workItem from="1715483079962" duration="649000" />
+      <workItem from="1715483933819" duration="858000" />
+      <workItem from="1715486303844" duration="2661000" />
+      <workItem from="1715532150819" duration="56000" />
+      <workItem from="1715532213694" duration="846000" />
+      <workItem from="1715554534356" duration="13637000" />
+      <workItem from="1715637470392" duration="5037000" />
+      <workItem from="1715643194717" duration="4753000" />
+      <workItem from="1715739260415" duration="260000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="acoustid" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>

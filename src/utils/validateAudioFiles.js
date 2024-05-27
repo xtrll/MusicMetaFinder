@@ -19,20 +19,19 @@ export default async function validateAudioFile(filePath) {
 
     // MIME type checking
     const mimeType = mime.lookup(filePath);
-    console.log(`MIME type of ${filePath} is ${mimeType}`); // Log the MIME type
 
     // Set of recognized audio MIME types
     const validAudioMimeTypes = new Set([
-      'audio/mpeg',       // .mp3
-      'audio/wav',        // .wav
-      'audio/x-wav',      // .wav
-      'audio/flac',       // .flac
-      'audio/x-flac',     // .flac
-      'audio/ogg',        // .ogg
-      'audio/aac',        // .aac
-      'audio/aiff',       // .aiff
-      'audio/x-aiff',     // .aiff
-      'audio/x-m4a',      // .m4a
+      'audio/mpeg', // .mp3
+      'audio/wav', // .wav
+      'audio/x-wav', // .wav
+      'audio/flac', // .flac
+      'audio/x-flac', // .flac
+      'audio/ogg', // .ogg
+      'audio/aac', // .aac
+      'audio/aiff', // .aiff
+      'audio/x-aiff', // .aiff
+      'audio/x-m4a', // .m4a
     ]);
 
     // Perform the MIME type validation

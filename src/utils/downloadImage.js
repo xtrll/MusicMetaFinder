@@ -1,5 +1,5 @@
-import axiosRetry from '../utils/retryAxios.js';
 import fs from 'fs';
+import axiosRetry from './retryAxios.js';
 
 /**
  * Downloads an image from the specified URL and saves it to the provided file path.
@@ -34,4 +34,3 @@ export default async function downloadImage(url, downloadPath) {
     throw error;
   }
 }
-

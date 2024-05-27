@@ -15,7 +15,7 @@ export default async function getMetadata(trackIds) {
 
     const accessToken = await getSpotifyAccessToken();
 
-    const metadataPromises = trackIds.map(trackId => requestMetadata(trackId, accessToken));
+    const metadataPromises = trackIds.map((trackId) => requestMetadata(trackId, accessToken));
 
     // Resolves to an array of metadata objects corresponding to the track IDs.
     return await Promise.all(metadataPromises);
@@ -24,4 +24,3 @@ export default async function getMetadata(trackIds) {
     throw e; // Rethrowing the error to handle it at a higher level
   }
 }
-

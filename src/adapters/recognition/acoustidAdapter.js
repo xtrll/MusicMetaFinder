@@ -14,6 +14,7 @@ export default async function recognizeAudioFiles(audioFiles) {
       return { filePath, id };
     } catch (error) {
       // Log the error, return an object with filePath and null id
+      // This prevents one failed recognition from stopping the whole process
       console.error(`Recognition failed for file ${filePath}:`, error);
       return { filePath, id: null };
     }

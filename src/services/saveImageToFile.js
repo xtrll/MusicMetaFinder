@@ -1,7 +1,6 @@
 import path from 'path';
-import fs from 'fs';
 import downloadImage from '../utils/downloadImage.js';
-import ensureDirectoryExists from "../utils/ensureDirectoryExists.js";
+import ensureDirectoryExists from '../utils/ensureDirectoryExists.js';
 
 /**
  * Saves an image from a specified URL to a given output directory.

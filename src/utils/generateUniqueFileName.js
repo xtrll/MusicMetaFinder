@@ -16,6 +16,7 @@ const generateUniqueFilename = async (directory, filename) => {
   let filePath = path.join(directory, uniqueFilename);
 
   // Check if the file exists and append a counter to make it unique
+  // eslint-disable-next-line no-await-in-loop
   while (await fs.stat(filePath).catch(() => false)) {
     uniqueFilename = `${basename} (${counter})${extension}`;
     filePath = path.join(directory, uniqueFilename);

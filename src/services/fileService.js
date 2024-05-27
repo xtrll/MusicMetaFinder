@@ -1,5 +1,5 @@
-import validateAudioFile from '../utils/validateAudioFiles.js';
 import path from 'path';
+import validateAudioFile from '../utils/validateAudioFiles.js';
 
 /**
  * Processes an array of file paths and returns an array containing only valid and supported audio file paths.
@@ -31,9 +31,8 @@ export default async function validateAudioFiles(filePaths) {
       if (supportedAudioExtensions.has(fileExtension)) {
         // Return the file path if the extension is supported
         return validFilePath;
-      } else {
-        console.error(`File ${path.basename(validFilePath)} is an audio file but ${fileExtension} format is not yet supported and so is ignored.`);
       }
+      console.error(`File ${path.basename(validFilePath)} is an audio file but ${fileExtension} format is not yet supported and so is ignored.`);
     }
     return null; // Return null if file is not valid or not supported
   });
