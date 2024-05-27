@@ -1,4 +1,4 @@
-import saveImageToFile from '../../../utils/saveImageToFile.js';
+import saveImageToFile from '../../saveImageToFile.js';
 
 /**
  * Normalizes the metadata from MusicBrainz to a standard format.
@@ -14,6 +14,7 @@ export default async function normalizeMusicBrainz(fileObjectsWithMetadata) {
     if (!fileObject || !fileObject.trackMetadata) {
       return null;
     }
+
     // Destructure properties from fileObject for ease of access
     const {
       trackMetadata: metadata, albumArtUrl, lyrics, filePath,
@@ -39,7 +40,7 @@ export default async function normalizeMusicBrainz(fileObjectsWithMetadata) {
       };
     } catch (error) {
       // Throw an error if normalization fails to ensure error handling upstream
-      throw new Error(`Error normalizing music brainz metadata for file ${filePath}: ${error}`);
+      throw new Error(`Error normalizing MusicBrainz metadata for file ${filePath}: ${error.message}`);
     }
   }));
 }
