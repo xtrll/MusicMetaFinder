@@ -1,5 +1,6 @@
 import path from 'path';
 import fs from 'fs/promises';
+import generateUniqueFilename from '../utils/generateUniqueFilename.js';
 
 /**
  * Renames an audio file by its metadata properties: artist and title.
@@ -13,13 +14,15 @@ import fs from 'fs/promises';
 export default async function renameFile(artist, title, filePath) {
   // Ensure file path, artist, and title are provided
   if (!filePath || !artist || !title) {
-    throw new Error('File path, artist, and title must be provided.');
+    throw new Error('File path, artist, and title must be provided when renaming file.');
   }
 
   const ext = path.extname(filePath);
   const dir = path.dirname(filePath);
-  const newFileName = `${artist} - ${title}${ext}`;
-  const newFilePath = path.join(dir, newFileName);
+  const proposedFileName = `${artist} - ${title}${ext}`;
+
+  // Generate a unique filename to avoid overwriting
+  const newFilePath = await generateUniqueFilename(dir, proposedFileName);
 
   try {
     await fs.rename(filePath, newFilePath);
