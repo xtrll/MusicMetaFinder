@@ -8,6 +8,9 @@ import recognizeFiles from './src/services/musicRecognitionService.js';
 import retrieveMetadataService from './src/services/metadata/metadataRetrievalService.js';
 import normalizeMetadataService from './src/services/metadata/normalizers/metadataNormalizerService.js';
 import writeMetadataService from './src/services/metadata/metadataWritingService.js';
+import deleteDirectoryRecursively from './src/utils/deleteDirectoryRecursively.js';
+import path from 'path';
+import { promises as fs } from 'fs';
 
 process.on('uncaughtException', (error) => {
   console.error('Uncaught Exception:', error);
@@ -28,29 +31,45 @@ checkEnv();
  * @param {string} [service] - Optional; name of the service to use for audio recognition.
  */
 async function main(inputPath, service) {
-  // Fetch the paths to audio files. This can handle a directory of files or a single file.
-  // `fetchFiles` resolves the path(s) and returns an array of file paths.
-  const files = await fetchFiles(inputPath);
+  try {
+    // Fetch the paths to audio files. This can handle a directory of files or a single file.
+    const files = await fetchFiles(inputPath);
 
-  // Validate the audio files at provided paths. This step checks their format,
-  // returning a filtered list of valid audio files.
-  const audioFiles = await validateFiles(files);
+    // Validate the audio files at provided paths. This step checks their format,
+    // returning a filtered list of valid audio files.
+    const audioFiles = await validateFiles(files);
 
-  // Perform the audio file recognition. This step takes the valid audio files and
-  // uses an audio recognition service to identify each track, associating it with a unique ID.
-  const filesWithIds = await recognizeFiles(audioFiles, service);
+    // Perform the audio file recognition. This step takes the valid audio files and
+    // uses an audio recognition service to identify each track, associating it with a unique ID.
+    const filesWithIds = await recognizeFiles(audioFiles, service);
 
-  // Retrieve the metadata for the recognized audio files. This involves fetching
-  // data such as titles, artists, albums, etc., based on the previously obtained track IDs.
-  const filesWithMetadata = await retrieveMetadataService(filesWithIds, service);
+    // Retrieve the metadata for the recognized audio files. This involves fetching
+    // data such as titles, artists, albums, etc., based on the previously obtained track IDs.
+    const filesWithMetadata = await retrieveMetadataService(filesWithIds, service);
 
-  // Normalize the fetched metadata. Data normalization involves converting all the
-  // metadata to a standard format or schema, ensuring consistency across all data points.
-  const normalizedMetadata = await normalizeMetadataService(filesWithMetadata, service);
+    // Normalize the fetched metadata. Data normalization involves converting all the
+    // metadata to a standard format or schema, ensuring consistency across all data points.
+    const normalizedMetadata = await normalizeMetadataService(filesWithMetadata, service);
 
-  // Write the normalized metadata into the audio files. This step actually updates each
-  // audio file with the correct metadata, so it's correctly recognized by media players.
-  await writeMetadataService(normalizedMetadata);
+    // Write the normalized metadata into the audio files. This step actually updates each
+    // audio file with the correct metadata, so it's correctly recognized by media players.
+    await writeMetadataService(normalizedMetadata);
+  } finally {
+    // Define the relative path to the images directory
+    const imagesDir = './images';
+
+    try {
+      // Check if the images directory exists before attempting to delete it
+      await fs.access(imagesDir);
+      await deleteDirectoryRecursively(imagesDir);
+      console.log('Temporary images directory deleted successfully.');
+    } catch (err) {
+      // Handle the error if the directory does not exist or deletion fails
+      if (err.code !== 'ENOENT') {
+        console.error('Failed to delete the images directory:', err);
+      }
+    }
+  }
 }
 
 /**
@@ -64,9 +83,6 @@ async function main(inputPath, service) {
  */
 function runCli() {
   try {
-    // Note: Ensure your argument indices are correct.
-    // If this is run with `npm run analyze -- <path>`, indices should be [[1]] and [[2]]
-    // Validates the input path (second CLI argument)
     const inputPath = process.argv[[2]];
     checkPath(inputPath);
 
@@ -74,7 +90,10 @@ function runCli() {
     const service = process.argv[[3]] || undefined;
 
     // Invoke the main function with the input path and service
-    main(inputPath, service);
+    main(inputPath, service).catch((error) => {
+      console.error('An error occurred:', error.message);
+      process.exit(1);
+    });
   } catch (error) {
     // Log the error message to the console
     console.error('An error occurred:', error.message);
