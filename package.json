@@ -1,9 +1,10 @@
 {
   "name": "music-meta-finder",
   "version": "1.0.0",
-  "description": "CLI utility for music enthusiasts to automatically recognize tracks and enrich file metadata based on the fetched information.",
+  "description": "A CLI tool to automatically recognize tracks and enrich file metadata based on the fetched information.",
+  "main": "cli.js",
   "bin": {
-    "analyze-audio": "node --env-file .env ./cli.js"
+    "music-meta-finder": "cli.js"
   },
   "dependencies": {
     "axios": "^1.6.8",
