@@ -14,23 +14,20 @@ With its ability to process an entire directory or individual files, MusicMetaFi
 
 ## Installation
 
-**1. FFmpeg Requirement**
-    - Ensure ffmpeg is installed and available in your system’s PATH.
+**1. Dependencies  Requirement**
+    - Ensure both FFmpeg and Chromaprint are installed and available in your system’s PATH.
 
 ```sh
 # On Windows
-winget install ffmpeg
+winget install ffmpeg && winget install chromaprint
 
 # On macOS
-brew install ffmpeg
+brew install ffmpeg chromaprint
 
 # On Linux
-sudo apt-get install ffmpeg
+sudo apt-get install ffmpeg chromaprint
 ```
-Ensure FFmpeg is now available in your terminal with following command:
-```
-ffmpeg --version
-```
+
 **2. MusicMetaFinder Installation**
 
 ```
