@@ -56,9 +56,6 @@ music-meta-finder analyze path/to/your/directory/or/file
 ```
 
 
-- **Options and Flags**
-    - ```No flags or other options yet```
-
 ## Examples
 
 - **Example 1: Bulk Processing Path**
