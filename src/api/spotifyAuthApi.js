@@ -1,4 +1,4 @@
-import qs from 'qs';
+import querystring from 'querystring';
 import axiosRetry from '../utils/retryAxios.js';
 import handleError from '../errors/generalApiErrorHandler.js';
 
@@ -12,7 +12,7 @@ export default async function getSpotifyAccessToken() {
       Authorization: `Basic ${Buffer.from(`${client_id}:${client_secret}`).toString('base64')}`,
       'Content-Type': 'application/x-www-form-urlencoded',
     },
-    data: qs.stringify({
+    data: querystring.stringify({
       grant_type: 'client_credentials',
     }),
   };
