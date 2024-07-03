@@ -23,12 +23,13 @@
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.29.1",
+    "esmock": "^2.6.6",
     "globals": "^15.0.0",
     "mocha": "^10.5.2",
     "sinon": "^18.0.0"
   },
   "scripts": {
-    "test": "mocha --recursive \"tests/**/*.test.js\"",
+    "test": "mocha --exit --es-module-specifier-resolution=node --experimental-modules --loader=esmock test/**/*.test.js",
     "lint": "eslint . --fix",
     "analyze": "node --env-file .env cli.js"
   },

@@ -1,14 +1,14 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
 import fs from 'fs/promises';
-import generateUniqueFilename from '../../src/utils/generateUniqueFilename.js';
 import path from "path";
+import generateUniqueFilename from '../../src/utils/generateUniqueFilename.js';
 
 describe('generateUniqueFilename', () => {
   let statStub;
 
   beforeEach(() => {
-    // Stub fs.stat to control its behavior during tests
+    // Stub fs.stat to control its behavior during test
     statStub = sinon.stub(fs, 'stat');
   });
 
@@ -17,7 +17,7 @@ describe('generateUniqueFilename', () => {
     statStub.restore();
   });
 
-  it('should return the original filename if it does not exist', async () => {
+  it('should return the original filename when conflict does not exist', async () => {
     const directory = 'music';
     const originalFilename = 'song.mp3';
 
@@ -48,8 +48,6 @@ describe('generateUniqueFilename', () => {
     });
 
     const uniqueFilename = await generateUniqueFilename(directory, originalFilename);
-
-    console.debug(`Final unique filename: ${uniqueFilename}`);
 
     const changedPattern = /^music[\\/][^\\/]+\s\(\d+\)\.\w+$/;
     expect(uniqueFilename).to.match(changedPattern);
