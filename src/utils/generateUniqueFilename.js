@@ -2,6 +2,15 @@ import fs from 'fs/promises';
 import path from 'path';
 
 /**
+ * Utility to normalize paths to use forward slashes
+ * @param {string} p
+ * @return {string}
+ */
+function normalizeToForwardSlash(p) {
+  return p.split(path.sep).join('/');
+}
+
+/**
  * Generates a unique filename based on the original filename, ensuring it doesn't overwrite existing files.
  * @param {string} directory - The directory to save the downloaded image.
  * @param {string} filename - The original filename.
@@ -23,7 +32,7 @@ const generateUniqueFilename = async (directory, filename) => {
     counter += 1;
   }
 
-  return filePath;
+  return normalizeToForwardSlash(filePath);
 };
 
 export default generateUniqueFilename;
