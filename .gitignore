@@ -131,6 +131,9 @@ dist
 # Test files
 *.mp3
 music
+*.txt
 
 # Stores found album arts
 images
+
+
