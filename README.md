@@ -95,5 +95,5 @@ This project is licensed under the GPL-3.0 license.
 
 ## Contact
 
-For any inquiries, please contact me on [telegram](https://t.me/xtruIIor).
+For any inquiries, please contact me on [telegram](https://t.me/xtrll).
 
